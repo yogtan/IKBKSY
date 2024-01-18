@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+/* NAVBARRRR */
+.navbar {
+    background-color: #172D13;
+}
+
+
+.navbar .navbar-nav {
+    font-family: 'Roboto', sans-serif;
+    margin-left: 440px;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: white;
+    margin: 10px;
+    /* margin-left: 440px; */
+}
+
+
+/* HOMEEEE */
+.hero-home {
+    background-image: url(../img/hero-bg2.svg);
+    background-position: center;
+    display: flex;
+    min-height: 630px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.hero-teks {
+    font-family: 'Zen Dots', sans-serif;
+    margin-top: 350px;
+
+}
+.teks1{
+    font-size: 40px;
+}
+
+.teks2{
+    font-size: 64px;
+}
+
+.teks3{
+    font-size: 24px;
+}
+.hero-teks2 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.teks-orange {
+    color: #D76F30;
+}
+
+
+/* HOMEEE2 */
+.hero-home2{
+    max-height: 100%;
+}
+
+.hero-teks-h2{
+    font-family: 'Zen Dots', sans-serif;
+}
+
+
+/* HOMEEEEE3 */
+.hero-home3{
+    max-height: 100%;
+    background-color: #172D13;
+}
+.deskripsi-h3{
+    text-align: justify;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* HOMEEEE4 */
+
+.hero-map .map-responsive iframe{
+    width: 100%;
+}
+
+.footer{
+    max-height: 100%;
+}
