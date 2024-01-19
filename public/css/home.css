@@ -14,21 +14,23 @@ body {
 }
 
 
-.navbar .navbar-nav {
+.navbar .nav-item{
     font-family: 'Roboto', sans-serif;
-    margin-left: 440px;
+    /* margin-left: 440px; */
 }
 
 .navbar .navbar-nav .nav-link {
+    font-weight: 400;
+    font-size: 18px;
     color: white;
-    margin: 10px;
-    /* margin-left: 440px; */
+    
+    
 }
 
 
 /* HOMEEEE */
 .hero-home {
-    background-image: url(../img/hero-bg2.svg);
+    background-image: url(../img/hero-bg.svg);
     background-position: center;
     display: flex;
     min-height: 630px;
@@ -91,4 +93,26 @@ body {
 
 .footer{
     max-height: 100%;
+}
+
+/* RESPONSIVEEE */
+
+@media (max-width: 767px){
+    .navbar-brand img{
+        width: 50px;
+    }
+
+    .hero-teks{
+        margin-top: 400px;
+    }
+    .hero-teks .teks1{
+        font-size: 20px;
+    }
+    .hero-teks .teks2{
+        font-size: 32px;
+    }
+    .hero-teks .teks3{
+        font-size: 14px;
+    }
+    
 }

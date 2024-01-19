@@ -27,36 +27,30 @@
         </div>
     </section>
 
-    <section class="hero-home3 mt-5 ">
+    <section class="hero-home3 mt-5">
         <div class="container">
             <div class="row">
-                <div class="col col-lg-6 mt-5">
-                    <img src="img/hero-bg.svg" width="500px" alt="">
+    
+                <div class="col-lg-6 order-md-first mt-5">
+                    <img src="img/hero-bg.svg" class="img-fluid" alt="Responsive Image">
                 </div>
+    
+                <div class="col-lg-6 mt-5">
+                    <h1 class="hero-teks-h2 text-white">SEJARAH <span class="teks-orange"> IKBKSY</span></h1>>
+                    <p class="deskripsi-h3 text-white">Organisasi dan komunitas kedaerahan yang mayoritas anggota dan simpatisannya adalah mahasiswa. Karena banyak mahasiswa, semestinya pula geraknya terukur, konseptual dan kritis. Kritis terhadap apa saja termasuk pada gerak organisasi itu sendiri. Banyak mahasiswa potensial yang melempem di pergulatan kampus, tapi tak mau kembali ke rumah sederhana ini untuk melatih diri. Bagaimanapun perjalanan hidup seorang, akan memiliki warna dan karakter ketika ia mau berlatih dan belajar di organisasi. Jika kawan-kawan tak mau bersama-sama membenahi, jangan kaget kalau masa-masa lemah tulang itu akan datang, seperti yang pernah terjadi di beberapa forum kemahasiswaan asal Kalimantan Barat di Yogyakarta.</p>
 
-                <div class="col col-lg-6 mt-5">
-                    <h1 class="hero-teks-h2 text-white">SEJARAH <span class="teks-orange"> IKBKSY</span></h1>
-                    <p class="deskripsi-h3 text-white ">Organisasi dan komunitas kedaerahan yang mayoritas anggota dan
-                        simpatisannya adalah mahasiswa. Karena banyak mahasiswa, semestinya pula geraknya terukur,konseptual
-                        dan kritis. Kritis terhadap apa saja termasuk pada gerak organisasi itu sendiri.
-                        Banyak mahasiswa potensial yang melempem di pergulatan kampus, tapi tak mau kembali ke rumah
-                        sederhana ini untuk melatih diri. Bagaimanapun perjalanan hidup seorang, akan memiliki warna dan
-                        karakter ketika ia mau berlatih dan belajar di organisasi.
-                        Jika kawan-kawan tak mau bersama-sama membenahi, jangan kaget kalau masa-masa lemah tulang itu akan
-                        datang, seperti yang pernah terjadi dibeberapa forum kemahasiswaan asal Kalimantan Barat di
-                        Yogyakarta.</p>
                 </div>
-                <div class="col col-lg-6 mt-5">
+    
+                <div class="col-lg-6 order-md-last mt-5">
+                   
+                    <img src="img/hero-bg.svg" class="img-fluid" alt="Responsive Image">
+                </div>
+    
+                <div class="col-lg-6 mt-5">
                     <h1 class="hero-teks-h2 text-white">TUJUAN <span class="teks-orange"> IKBKSY</span></h1>
-                    <p class="deskripsi-h3 text-white ">IKBKSY adalah forum yang berdiri di bawah naungan Pemda Kabupaten
-                        Sanggau Kalimantan Barat, dimana keanggotaannya adalah para pelajar & mahasiswa dari kabupaten
-                        sanggau yang saat ini sedang menempuh dunia pendidikan di Yogyakarta.</p>
+                    <p class="deskripsi-h3 text-white">IKBKSY adalah forum yang berdiri di bawah naungan Pemda Kabupaten Sanggau Kalimantan Barat, dimana keanggotaannya adalah para pelajar & mahasiswa dari kabupaten sanggau yang saat ini sedang menempuh dunia pendidikan di Yogyakarta.</p>
+                  
                 </div>
-                <div class="col col-lg-6 mt-5 mb-5">
-                    <img src="img/hero-bg.svg" width="500px" alt="">
-                </div>
-
-
             </div>
         </div>
     </section>
