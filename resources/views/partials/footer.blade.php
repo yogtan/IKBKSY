@@ -1,4 +1,4 @@
-<footer class="footer text-white text-center text-lg-start mt-5 pt-5" style="background-color: #172D13">
+<footer class="footer text-white text-center text-lg-start mt-5" style="background-color: #172D13">
     <div class="container ">
 
         <h5 class="hero-teks2 fs-6  text-center mb-5">Jl. Kepuh GK III No.1011, Klitren, Kec. Gondokusuman, Daerah Istimewa Yogyakarta
@@ -9,5 +9,5 @@
         <br>
 
     </div>
-    </div>
+    
 </footer>

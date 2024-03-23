@@ -24,7 +24,7 @@
                             About
                         </a>
                         <ul class="dropdown-menu  mt-4">
-                            <li><a class="dropdown-item" href="#">Sejarah</a></li>
+                            <li><a class="dropdown-item" href="/sejarah">Sejarah</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

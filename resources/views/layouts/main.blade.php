@@ -29,9 +29,19 @@
 
 <body>
 
-    @include('partials.navbar')
-    @yield('container')
-    @include('partials.footer')
+    <div class="d-flex flex-column min-vh-100">
+        <header>
+        
+            @include('partials.navbar')
+        </header>
+        <main class="flex-grow-1">
+          
+            @yield('container')
+        </main>
+        <footer class="bg-dark text-light text-center">
+           
+            @include('partials.footer')
+        </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
