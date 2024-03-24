@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/sejarah', function () {
     return view('about.sejarah');
 });
+Route::get('/visimisi', function () {
+    return view('about.visimisi');
+});

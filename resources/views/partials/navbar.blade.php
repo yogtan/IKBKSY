@@ -7,16 +7,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="offcanvas offcanvas-end hero-home3" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas offcanvas-end hero-home3" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header  border">
                 <h5 class="offcanvas-title teks-orange hero-teks-h2" id="offcanvasNavbarLabel">IKBKSY</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-            
+
                 <ul class="navbar-nav justify-content-end  flex-grow-1 pe-3">
                     <li class="nav-item ">
-                        <a class="nav-link active me-5" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active me-5" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle  me-5" href="#" role="button"
@@ -28,7 +29,11 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Visi/Misi</a></li>
+                            <li><a class="dropdown-item" href="#">Simbol</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/visimisi">Visi/Misi</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
