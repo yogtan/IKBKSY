@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg ">
     <div class="container">
 
-        <a class="navbar-brand" href="#"><img src="../img/logo-ikbksy.svg" width="76px" alt=""></a>
+        <a class="navbar-brand" href="/home"><img src="../img/logo-ikbksy.svg" width="76px" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Simbol</a></li>
+                            <li><a class="dropdown-item" href="/simbol">Simbol</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -37,7 +37,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Struktur Forum</a></li>
+                            <li><a class="dropdown-item" href="/pengurus">Struktur Forum</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -22,3 +22,9 @@ Route::get('/sejarah', function () {
 Route::get('/visimisi', function () {
     return view('about.visimisi');
 });
+Route::get('/pengurus', function () {
+    return view('about.pengurus');
+});
+Route::get('/simbol', function () {
+    return view('about.simbol');
+});
