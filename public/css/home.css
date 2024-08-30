@@ -114,5 +114,15 @@ body {
     .hero-teks .teks3{
         font-size: 14px;
     }
+    .space-tunggu-kami {
+        margin-right: 0 !important;;
+    }
+    .line-tunggu-kami {
+        width: 50%;
+    }
+
+    .line-tunggu-kami, .subcribe, .logo-medsos {
+        margin: auto;
+    }
     
 }
