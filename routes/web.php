@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,7 @@ Route::get('/', function () {
         'title' => "Home - IKBKSY"
     ]);
 });
+
 
 Route::get('/about/sejarah', function () {
     return view('about.sejarah', [
@@ -48,3 +49,7 @@ Route::get('/galeri', function () {
         'title' => "galeri - IKBKSY"
     ]);
 })->name('galeriIKBKSY');
+
+Auth::routes();
+
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
