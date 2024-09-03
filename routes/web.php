@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\KepenggurusanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,17 +35,17 @@ Route::get('/about/visi-misi', function () {
     ]);
 })->name('visimisiIKBKSY');
 
-Route::get('/about/pengurus', function () {
-    return view('about.pengurus', [
-        'title' => "Pengurus - IKBKSY"
-    ]);
-})->name('pengurusIKBKSY');
+// Route::get('/about/pengurus', function () {
+//     return view('about.pengurus', [
+//         'title' => "Pengurus - IKBKSY"
+//     ]);
+// })->name('pengurusIKBKSY');
 
-Route::get('/blog', function () {
-    return view('blog.blog', [
-        'title' => "Blog - IKBKSY"
-    ]);
-})->name('blogIKBKSY');
+// Route::get('/blog', function () {
+//     return view('blog.blog', [
+//         'title' => "Blog - IKBKSY"
+//     ]);
+// })->name('blogIKBKSY');
 
 Route::get('/galeri', function () {
     return view('galeri.galeri', [
@@ -52,4 +55,11 @@ Route::get('/galeri', function () {
 
 Auth::routes();
 
-Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [HomeController::class, 'index'])->name('home');
+
+Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('pengurusIKBKSY');
+Route::get('/about/pengurus/add', [KepenggurusanController::class, 'create'])->name('addPengurus');
+Route::post('/about/pengurus/add', [KepenggurusanController::class, 'store'])->name('addPengurus');
+Route::get('/blog', [BlogController::class, 'index'])->name('blogIKBKSY');
+Route::get('/blog/testing', [BlogController::class, 'create'])->name('blogIKBKSY');
+Route::get('/blog/add', [BlogController::class, 'create'])->name('addBlog');
