@@ -4,7 +4,7 @@
         {{-- Logo dan alamat IKBKSY --}}
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0 mt-2 d-flex align-items-center justify-content-between">
           <div class="d-flex align-self-center mt-3">
-            <img src="../img/logo-ikbksy.svg" class="img-fluid me-3" alt="Logo IKBKSY" loading="lazy">
+            <img src="/img/logo-ikbksy.svg" class="img-fluid me-3" alt="Logo IKBKSY">
             <div>
               <h5 class="text-uppercase hero-teks-h2 teks-orange">IKBKSY</h5>
               <p class="hero-teks2 fs-6">

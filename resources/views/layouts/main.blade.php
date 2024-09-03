@@ -11,7 +11,6 @@
     {{-- FONTT --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/footers/">
 
     {{-- FONT FAMILY --}}
@@ -22,9 +21,11 @@
     {{-- ICON BOOTSTRAP --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    {{-- ICON LOGO PADA HEADER --}}
+    <link rel="icon" href="/img/logo-ikbksy.svg" type="image/x-icons">
 
     {{-- CSS --}}
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
