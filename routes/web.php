@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\KepenggurusanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -53,13 +54,40 @@ Route::get('/galeri', function () {
     ]);
 })->name('galeriIKBKSY');
 
+Route::get('/admin/struktur', function () {
+    return view('admin.struktur.index', [
+        'title' => "galeri - IKBKSY"
+    ]);
+});
+
 Auth::routes();
 
-Route::get('/admin', [HomeController::class, 'index'])->name('home');
-
 Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('pengurusIKBKSY');
-Route::get('/about/pengurus/add', [KepenggurusanController::class, 'create'])->name('addPengurus');
-Route::post('/about/pengurus/add', [KepenggurusanController::class, 'store'])->name('addPengurus');
+// Route::get('/about/pengurus/add', [KepenggurusanController::class, 'create'])->name('addPengurus');
+// Route::post('/about/pengurus/add', [KepenggurusanController::class, 'store'])->name('addPengurus');
+// Route::post('/about/pengurus/department/add', [DepartmentController::class, 'store'])->name('addDepartment');
+
 Route::get('/blog', [BlogController::class, 'index'])->name('blogIKBKSY');
 Route::get('/blog/testing', [BlogController::class, 'create'])->name('blogIKBKSY');
 Route::get('/blog/add', [BlogController::class, 'create'])->name('addBlog');
+
+
+
+// admin
+Route::get('/admin', [HomeController::class, 'index'])->name('admin');
+
+// Pengurus
+Route::get('/admin/struktur/pengurus/', [KepenggurusanController::class, 'all'])->name('allPengurus');
+Route::get('/admin/struktur/pengurus/add', [KepenggurusanController::class, 'create'])->name('addPengurus');
+Route::post('/admin/struktur/pengurus/add', [KepenggurusanController::class, 'store'])->name('addPengurus');
+Route::get('/admin/struktur/pengurus/edit/{id}', [KepenggurusanController::class, 'edit'])->name('updatePengurus');
+Route::patch('/admin/struktur/pengurus/edit/{id}', [KepenggurusanController::class, 'update'])->name('updatePengurus');
+Route::delete('/admin/struktur/pengurus/{id}', [KepenggurusanController::class, 'destroy'])->name('deletePengurus');
+
+// Department
+Route::get('/admin/struktur/department/', [DepartmentController::class, 'index'])->name('department');
+Route::get('/admin/struktur/department/add', [DepartmentController::class, 'create'])->name('addDepartment');
+Route::post('/admin/struktur/department/add', [DepartmentController::class, 'store'])->name('addDepartment');
+Route::get('/admin/struktur/department/edit/{id}', [DepartmentController::class, 'edit'])->name('updateDepartment');
+Route::patch('/admin/struktur/department/edit/{id}', [DepartmentController::class, 'update'])->name('updateDepartment');
+Route::delete('/admin/struktur/department/{id}', [DepartmentController::class, 'destroy'])->name('deleteDepartment');

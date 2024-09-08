@@ -47,9 +47,12 @@
         </symbol>
     </svg>
 
-    <link href="../css/admin.css" rel="stylesheet">
+    <link href="/css/admin.css" rel="stylesheet">
 
-    <title>XIKBSY</title>
+    {{-- ICON LOGO PADA HEADER --}}
+    <link rel="icon" href="/img/logo-ikbksy.svg" type="image/x-icons">
+
+    <title>IKBKSY</title>
 </head>
 
 <body>

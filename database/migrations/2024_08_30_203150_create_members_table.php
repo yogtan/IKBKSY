@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->unsignedBigInteger('id_department');
+            $table->foreignId('id_department')->constrained('departments')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('position');
             $table->timestamps();
 
-            $table->foreign('id_department')->references('id')->on('departments')->onDelete('cascade');
+            // $table->foreign('id_department')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 

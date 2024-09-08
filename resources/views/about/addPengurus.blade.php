@@ -23,6 +23,10 @@
                                     <option value="{{ $department->id }}">{{ $department->sector }}</option>
                                 @endforeach
                             </select>
+                            {{-- add new department --}}
+                            <div class="ms-1 mt-2">
+                                <a href="#" class="pe-auto cursor-pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Department</a>
+                              </div>
                         </div>
                         <div class="mb-4">
                             <label for="exampleFormControlInput1" class="form-label fw-bolder">Position</label>
@@ -38,7 +42,29 @@
                     </form>
                 </div>
             </div>
-
         </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog hero-teks2">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Department</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('addDepartment') }}" method="POST">
+                        <div class="modal-body">
+                            @csrf
+                            <label for="exampleFormControlInput2" class="form-label fw-bolder">New Department</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="New Department" name="newDepartment" value="" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-success btn-md" type="submit" data-bs-dismiss="modal">Save Department</button>
+                            <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </section>
 @endsection

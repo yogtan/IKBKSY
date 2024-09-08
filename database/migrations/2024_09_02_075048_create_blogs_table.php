@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('author');
             $table->string('publication');
             $table->string('image');
-            $table->string('description');
-            $table->unsignedBigInteger('id_category');
+            $table->text('description');
+            $table->foreignId('id_category')->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->foreign('id_category')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('id_category')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

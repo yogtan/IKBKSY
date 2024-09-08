@@ -1,4 +1,4 @@
-<nav id="nav" class="navbar navbar-expand-lg navbar-light bg-dark" style="margin-left: 210px;">
+<nav id="nav" class="navbar navbar-expand-lg navbar-light bg-success" style="margin-left: 210px;">
     <div class="container">
         <!-- Tombol toggler untuk mengontrol tampilan sidebar -->
         <button class="navbar-toggler d-lg-block" type="button" id="sidebarToggle">
@@ -17,7 +17,7 @@
                 <strong>{{ Auth::user()->name }}</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-end">
-                <li><a class="dropdown-item" href="/">IKBKSY Home</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin') }}">Dasboard</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
