@@ -9,22 +9,33 @@
                 <div class="col-md-4">
                     <div class="card text-white bg-primary mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Total Posts</h5>
-                            {{-- <p class="card-text">{{ $totalpost }}</p> --}}
+                            <h5 class="card-title">Post Blog</h5>
+                            <p class="card-text">Total : {{ $totalBlog }}</p>
                         </div>
                         <div class="card-footer">
-                            {{-- <a class="card-text text-white" href="{{ route('admin_show_posts') }}">View Details</a> --}}
+                            <a class="card-text text-white" href="{{ route('allBlog') }}">View Details</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card text-white bg-success mb-3">
+                    <div class="card text-white bg-secondary mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Total Struktur</h5>
-                            {{-- <p class="card-text">{{ $totalkategorial }}</p> --}}
+                            <h5 class="card-title">Pengurus</h5>
+                            <p class="card-text">Total : {{ $totalPengurus }}</p>
                         </div>
                         <div class="card-footer">
-                            {{-- <a class="card-text text-white" href="{{ route('admin_show_kategorial') }}">View Details</a> --}}
+                            <a class="card-text text-white" href="{{ route('allPengurus') }}">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-secondary mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Department</h5>
+                            <p class="card-text">Total : {{ $totalDepartment }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="card-text text-white" href="{{ route('department') }}">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -32,10 +43,21 @@
                     <div class="card text-white bg-danger mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Total Galeri</h5>
-                            {{-- <p class="card-text"> {{ $totaldokumen }}</p> --}}
+                            {{-- <p class="card-text"> {{ $totalPengurus }}</p> --}}
                         </div>
                         <div class="card-footer">
                             {{-- <a class="card-text text-white" href="{{  route('admin_show_dok') }}">View Details</a> --}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-white bg-danger mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Category</h5>
+                            <p class="card-text">Total : {{ $totalCategory }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="card-text text-white" href="{{  route('category') }}">View Details</a>
                         </div>
                     </div>
                 </div>

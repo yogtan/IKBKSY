@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\KepenggurusanController;
 use Illuminate\Support\Facades\Route;
@@ -82,7 +83,7 @@ Route::get('/admin/struktur/pengurus/add', [KepenggurusanController::class, 'cre
 Route::post('/admin/struktur/pengurus/add', [KepenggurusanController::class, 'store'])->name('addPengurus');
 Route::get('/admin/struktur/pengurus/edit/{id}', [KepenggurusanController::class, 'edit'])->name('updatePengurus');
 Route::patch('/admin/struktur/pengurus/edit/{id}', [KepenggurusanController::class, 'update'])->name('updatePengurus');
-Route::delete('/admin/struktur/pengurus/{id}', [KepenggurusanController::class, 'destroy'])->name('deletePengurus');
+Route::delete('/admin/struktur/pengurus/delete/{id}', [KepenggurusanController::class, 'destroy'])->name('deletePengurus');
 
 // Department
 Route::get('/admin/struktur/department/', [DepartmentController::class, 'index'])->name('department');
@@ -90,4 +91,20 @@ Route::get('/admin/struktur/department/add', [DepartmentController::class, 'crea
 Route::post('/admin/struktur/department/add', [DepartmentController::class, 'store'])->name('addDepartment');
 Route::get('/admin/struktur/department/edit/{id}', [DepartmentController::class, 'edit'])->name('updateDepartment');
 Route::patch('/admin/struktur/department/edit/{id}', [DepartmentController::class, 'update'])->name('updateDepartment');
-Route::delete('/admin/struktur/department/{id}', [DepartmentController::class, 'destroy'])->name('deleteDepartment');
+Route::delete('/admin/struktur/department/delete/{id}', [DepartmentController::class, 'destroy'])->name('deleteDepartment');
+
+// Blog
+Route::get('/admin/blog/', [BlogController::class, 'all'])->name('allBlog');
+Route::get('/admin/blog/add', [BlogController::class, 'create'])->name('addBlog');
+Route::post('/admin/blog/add', [BlogController::class, 'store'])->name('addBlog');
+Route::get('/admin/blog/edit/{id}/', [BlogController::class, 'edit'])->name('updateBlog');
+Route::patch('/admin/blog/edit/{id}/', [BlogController::class, 'update'])->name('updateBlog');
+Route::delete('/admin/blog/delete/{id}', [BlogController::class, 'destroy'])->name('deleteBlog');
+
+// Category
+Route::get('/admin/category', [CategoryController::class, 'index'])->name('category');
+Route::get('/admin/category/add', [CategoryController::class, 'create'])->name('addCategory');
+Route::post('/admin/category/add', [CategoryController::class, 'store'])->name('addCategory');
+Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('updateCategory');
+Route::patch('/admin/category/edit/{id}', [CategoryController::class, 'update'])->name('updateCategory');
+Route::delete('/admin/category/delete/{id}', [CategoryController::class, 'destroy'])->name('deleteCategory');

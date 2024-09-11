@@ -6,7 +6,7 @@
 
   <div class="container my-5">
     <div class="hero-teks-h2">
-      <h1>Daftar Pengurus<span class="teks-orange"> IKBKSY</span></h1>
+      <h1>Daftar Blog<span class="teks-orange"> IKBKSY</span></h1>
     </div>
 
     @if (session('success'))
@@ -17,8 +17,7 @@
     @endif
 
     <div class="mt-3">
-      {{-- <button class="btn btn-primary btn-sm me-md-2" type="button">New Member</button> --}}
-      <a href="{{ route('addPengurus') }}" class="btn btn-primary btn-sm shadow">New Member</a>
+      <a href="{{ route('addBlog') }}" class="btn btn-primary btn-sm shadow">New Blog</a>
     </div>
 
     <div class="table-responsive my-4">
@@ -26,34 +25,38 @@
         <thead class="text-center">
           <tr>
             <th scope="col">No</th>
-            <th scope="col">Name</th>
-            <th scope="col">Foto</th>
-            <th scope="col">Position</th>
-            <th scope="col">Department</th>
+            <th scope="col">Author</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Publication</th>
+            <th scope="col">Image</th>
+            <th scope="col">Description</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
           @php $no = 1 @endphp
-          @foreach ($members as $member)
-            <tr class="text-center">
-              <td>{{ $no++ }}</td>
-              <td class="text-start">{{ $member->name }}</td>
-              <td>
-                @if ($member->image)
-                  <img src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->name }}" loading="lazy" style="width: 50px; height: 50px; object-fit: cover;">
+          @foreach ($blogs as $blog)
+            <tr>
+              <td class="text-center">{{ $no++ }}</td>
+              <td>{{ $blog->author }}</td>
+              <td>{{ Str::limit($blog->title, 50) }}</td>
+              <td>{{ $blog->category->category }}</td>
+              <td>{{ \Carbon\Carbon::parse($blog->publication)->format('d-m-Y') }}</td>
+              <td class="text-center">
+                @if ($blog->image)
+                  <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ Str::limit($blog->title, 10) }}" loading="lazy" style="width: 50px; height: 50px; object-fit: cover;">
                 @else
                   <img src="{{ asset('storage/default-avatar.jpg') }}" alt="Default Image" loading="lazy" style="width: 50px; height: 50px; object-fit: cover;">
                 @endif
               </td>
-              <td class="text-start">{{ $member->position }}</td>
-              <td class="text-start">{{ $member->department->sector }}</td>
+              <td>{{ Str::limit($blog->description, 50) }}</td>
               <td>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center align-items-center">
                   {{-- Button edit --}}
-                  <a type="submit" href="{{ route('updatePengurus', $member->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <a type="submit" href="{{ route('updateBlog', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   {{-- Button delete --}}
-                  <form action="{{ route('deletePengurus', $member->id) }}" method="POST" onsubmit="return confirm('Are You Sure Delete Data Member ?')">
+                  <form action="{{ route('deleteBlog', $blog->id) }}" method="POST" onsubmit="return confirm('Are You Sure Delete Blog ?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
