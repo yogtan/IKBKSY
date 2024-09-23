@@ -39,7 +39,10 @@
                         <a class="nav-link  me-5" href="/blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/galeri">Galeri</a>
+                        <a class="nav-link me-5" href="/galeri">Galeri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('kontakIKBKSY') }}">Kontak</a>
                     </li>
                 </ul>
             </div>

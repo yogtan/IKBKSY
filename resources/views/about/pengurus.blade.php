@@ -2,7 +2,7 @@
 
 @section('container')
     <section class="Pengurus">
-        <div class="container">
+        <div class="container my-5">
 
             <div class="hero-teks-h2 mt-5">
                 <h1>Struktur<span class="teks-orange"> IKBKSY</span></h1>
@@ -28,6 +28,7 @@
                 </div>
             </section>
             
+            {{ $members->links() }}
 
         </div>
 

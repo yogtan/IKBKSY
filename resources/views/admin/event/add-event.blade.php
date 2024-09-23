@@ -5,37 +5,16 @@
 <section>
     <div class="container my-5">
         <div class="hero-teks-h2">
-            <h1>Tambahkan Blog<span class="teks-orange"> IKBKSY</span></h1>
+            <h1>Tambahkan Event<span class="teks-orange"> IKBKSY</span></h1>
         </div>
-
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <div class="card shadow mt-4 hero-teks2">
             <div class="card-body">
-                <form action="{{ route('addBlog') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('addEvent') }}" method="POST">
                     @csrf
                     <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label fw-bolder">Title</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="title" value="" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label fw-bolder">Author</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Author" name="author" value="" required>
+                        <label for="exampleFormControlInput1" class="form-label fw-bolder">Event</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Event" name="event" value="" required>
                     </div>
                     <div class="mb-4">
                         <label for="floatingSelectGrid" class="form-label fw-bolder">Category</label>
@@ -51,12 +30,12 @@
                           </div>
                     </div>
                     <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label fw-bolder">Publication</label>
-                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Publication" name="publication" value="" required>
+                        <label for="exampleFormControlInput1" class="form-label fw-bolder">Location</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Location" name="location" value="" required>
                     </div>
                     <div class="mb-4">
-                        <label for="exampleFormControlInput1" class="form-label fw-bolder">Image</label>
-                        <input type="file" accept=".jpg, .jpeg, .png, .svg" class="form-control" id="exampleFormControlInput1" placeholder="Image" name="image" value="" required>
+                        <label for="exampleFormControlInput1" class="form-label fw-bolder">Publication</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Time Publication" name="publication" value="" required>
                     </div>
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label fw-bolder">Description</label>
@@ -80,7 +59,7 @@
                 <form action="{{ route('addCategory') }}" method="POST">
                     <div class="modal-body">
                         @csrf
-                        <input type="hidden" name="source" value="addBlogPage">
+                        <input type="hidden" name="source" value="addEventPage">
                         <label for="exampleFormControlInput2" class="form-label fw-bolder">New Category</label>
                         <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="New Category" name="newCategory" value="" required>
                     </div>

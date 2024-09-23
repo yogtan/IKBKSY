@@ -2,26 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\Blog;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Gallery extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'category'
+        'name',
+        'id_event',
+        'is_released',
     ];
-
-    public function blog()
-    {
-        return $this->hasMany(Blog::class);
-    }
 
     public function event()
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsTo(Event::class, 'id_event');
     }
 }

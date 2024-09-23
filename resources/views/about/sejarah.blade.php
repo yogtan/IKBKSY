@@ -5,7 +5,7 @@
         <div class="container">
 
             <div class="hero-teks-h2 mt-5">
-                <h1>TENTANG <span class="teks-orange"> IKBKSY</span></h1>
+                <h1>SEJARAH <span class="teks-orange"> IKBKSY</span></h1>
 
             </div>
             <p class="mt-3" style="text-align: justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit at animi officia quaerat nisi

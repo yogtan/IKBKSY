@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::latest()->paginate(10);
 
         return view('admin.category.index', [
             'title' => 'Category - IKBKSY',
@@ -48,6 +48,10 @@ class CategoryController extends Controller
 
         if ($request->source === 'addBlogPage') {
             return redirect()->route('addBlog')->with('success', 'Success add category !');
+        } else if ($request->source === 'addEventPage') {
+            return redirect()->route('addEvent')->with('success', 'Success add category !');
+        } else if ($request->source === 'addGelleryPage') {
+            return redirect()->route('addGallery')->with('success', 'Success add category !');
         } else {
             return redirect()->route('category')->with('success', 'Success add category !');
         }

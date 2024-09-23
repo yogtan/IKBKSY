@@ -14,7 +14,7 @@ class KepenggurusanController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
+        $members = Member::paginate(10);
 
         return view('about.pengurus', [
             'title' => 'Pengurus - IKBKSY',
@@ -27,7 +27,7 @@ class KepenggurusanController extends Controller
      */
     public function all()
     {
-        $members = Member::paginate(10);
+        $members = Member::latest()->paginate(10);
         // $members = Member::with('department')->get();
 
         return view('admin.struktur.pengurus.index', [

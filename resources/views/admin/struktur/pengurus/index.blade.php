@@ -34,7 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          @php $no = 1 @endphp
+          @php $no = ($members->currentPage() - 1) * $members->perPage() + 1 @endphp
           @foreach ($members as $member)
             <tr class="text-center">
               <td>{{ $no++ }}</td>
@@ -66,6 +66,8 @@
         </tbody>
       </table>
     </div>
+
+    {{ $members->links() }}
 
   </div>
 

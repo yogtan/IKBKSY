@@ -12,7 +12,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
+        $departments = Department::latest()->paginate(10);
 
         return view('admin.struktur.department.index', [
             'titile' => 'Department - IKBKSY',

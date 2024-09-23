@@ -3,6 +3,8 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\KepenggurusanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +57,12 @@ Route::get('/galeri', function () {
     ]);
 })->name('galeriIKBKSY');
 
+Route::get('/kontak', function () {
+    return view('kontak.kontak', [
+        'title' => "Kontak - IKBKSY"
+    ]);
+})->name('kontakIKBKSY');
+
 Route::get('/admin/struktur', function () {
     return view('admin.struktur.index', [
         'title' => "galeri - IKBKSY"
@@ -69,8 +77,7 @@ Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('
 // Route::post('/about/pengurus/department/add', [DepartmentController::class, 'store'])->name('addDepartment');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blogIKBKSY');
-Route::get('/blog/testing', [BlogController::class, 'create'])->name('blogIKBKSY');
-Route::get('/blog/add', [BlogController::class, 'create'])->name('addBlog');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blogDetail');
 
 
 
@@ -108,3 +115,18 @@ Route::post('/admin/category/add', [CategoryController::class, 'store'])->name('
 Route::get('/admin/category/edit/{id}', [CategoryController::class, 'edit'])->name('updateCategory');
 Route::patch('/admin/category/edit/{id}', [CategoryController::class, 'update'])->name('updateCategory');
 Route::delete('/admin/category/delete/{id}', [CategoryController::class, 'destroy'])->name('deleteCategory');
+
+// Event
+Route::get('/event', [EventController::class, 'index'])->name('event');
+Route::get('/admin/event/add', [EventController::class, 'create'])->name('addEvent');
+Route::post('/admin/event/add', [EventController::class, 'store'])->name('addEvent');
+Route::get('/admin/event/edit/{id}', [EventController::class, 'edit'])->name('updateEvent');
+Route::patch('/admin/event/edit/{id}', [EventController::class, 'update'])->name('updateEvent');
+Route::delete('/admin/event/edit/{id}', [EventController::class, 'destroy'])->name('deleteEvent');
+
+// Gallery
+Route::get('/admin/gallery', [GalleryController::class, 'all'])->name('allGallery');
+Route::get('/admin/gallery/add/{id_event?}', [GalleryController::class, 'create'])->name('addGallery');
+Route::post('/admin/gallery/upload', [GalleryController::class, 'uploadImage'])->name('uploadGalleryImage');
+Route::get('/admin/gallery/release/{id_event}', [GalleryController::class, 'releaseGallery'])->name('releaseGallery');
+Route::get('/admin/gallery/add/{id_event}', [GalleryController::class, 'showEventGalleries'])->name('showEventGalleries');

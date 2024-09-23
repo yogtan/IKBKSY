@@ -30,7 +30,7 @@
           </tr>
         </thead>
         <tbody>
-          @php $no = 1 @endphp
+          @php $no = ($categories->currentPage() - 1) * $categories->perPage() + 1 @endphp
           @foreach ($categories as $category)
             <tr>
               <td class="text-center">{{ $no++ }}</td>
@@ -53,6 +53,8 @@
         </tbody>
       </table>
     </div>
+
+    {{ $categories->links() }}
 
   </div>
 

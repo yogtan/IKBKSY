@@ -5,7 +5,7 @@
 <section>
     <div class="container my-5">
         <div class="hero-teks-h2">
-            <h1>Tambahkan Department<span class="teks-orange"> IKBKSY</span></h1>
+            <h1>Tambahkan Category<span class="teks-orange"> IKBKSY</span></h1>
         </div>
 
         <div class="card shadow mt-4 hero-teks2">
@@ -15,8 +15,8 @@
                     <input type="hidden" name="source" value="addCategoryPage">
                     <div class="mb-4">
                         @csrf
-                        <label for="exampleFormControlInput2" class="form-label fw-bolder">New Department</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="New Department" name="newCategory" value="" required>
+                        <label for="exampleFormControlInput2" class="form-label fw-bolder">New Category</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="New Category" name="newCategory" value="" required>
                     </div>
                     <div class="mb-4 text-center">
                         <button type="submit" class="btn btn-primary shadow-sm mt-4 fw-bold">Submit</button>

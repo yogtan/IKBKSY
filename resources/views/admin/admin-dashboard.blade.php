@@ -46,7 +46,7 @@
                             {{-- <p class="card-text"> {{ $totalPengurus }}</p> --}}
                         </div>
                         <div class="card-footer">
-                            {{-- <a class="card-text text-white" href="{{  route('admin_show_dok') }}">View Details</a> --}}
+                            <a class="card-text text-white" href="#">View Details</a>
                         </div>
                     </div>
                 </div>

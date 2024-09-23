@@ -6,7 +6,7 @@
 
   <div class="container my-5">
     <div class="hero-teks-h2">
-      <h1>Daftar Department<span class="teks-orange"> IKBKSY</span></h1>
+      <h1>Daftar Event<span class="teks-orange"> IKBKSY</span></h1>
     </div>
 
     @if (session('success'))
@@ -17,7 +17,7 @@
     @endif
 
     <div class="mt-3">
-      <a href="{{ route('addDepartment') }}" class="btn btn-primary btn-sm shadow">New Department</a>
+      <a href="{{ route('addEvent') }}" class="btn btn-primary btn-sm shadow">New Event</a>
     </div>
 
     <div class="table-responsive my-4">
@@ -25,24 +25,30 @@
         <thead class="text-center">
           <tr>
             <th scope="col">No</th>
-            <th scope="col">Sector</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Time</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          {{-- @php $no = 1 @endphp --}}
-          @php $no = ($departments->currentPage() - 1) * $departments->perPage() + 1 @endphp
-          @foreach ($departments as $department)
+          @php $no = ($events->currentPage() - 1) * $events->perPage() + 1 @endphp
+          @foreach ($events as $event)
             <tr>
-              {{-- <td class="text-center">{{ ($departments->currentPage() - 1) * $departments->perPage() + $loop->iteration }}</td> --}}
               <td class="text-center">{{ $no++ }}</td>
-              <td>{{ $department->sector }}</td>
+              <td>{{ Str::limit($event->name, 25) }}</td>
+              <td>{{ $event->location }}</td>
+              <td>{{ $event->publication }}</td>
+              <td>{{ Str::limit($event->description, 250) }}</td>
+              <td class="text-center">{{ $event->category->category }}</td>
               <td>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center align-items-center">
                   {{-- Button edit --}}
-                  <a type="submit" href="{{ route('updateDepartment', $department->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <a type="submit" href="{{ route('updateEvent', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   {{-- Button delete --}}
-                  <form action="{{ route('deleteDepartment', $department->id) }}" method="POST" onsubmit="return confirm('Deleting department data may result in the loss and corruption of member data. Are you sure delete data Department ?')">
+                  <form action="{{ route('deleteEvent', $event->id) }}" method="POST" onsubmit="return confirm('Deleting event data may result in the loss and corruption of some data. Are you sure delete data event ?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -55,8 +61,8 @@
         </tbody>
       </table>
     </div>
-
-    {{ $departments->links() }}
+    
+    {{ $events->links() }}
 
   </div>
 

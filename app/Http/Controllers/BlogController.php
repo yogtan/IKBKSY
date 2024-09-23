@@ -15,11 +15,27 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        // $blogs = Blog::latest()->paginate(10);
+        // $blogs = Blog::filter(request(['search', 'category', 'author']))->latest()->paginate(10)->withQueryString();
+        $blogs = Blog::filter(request(['search']))->latest()->paginate(10)->withQueryString();
+
+        return view('blog.blogs', [
+            'title' => 'Blog - IKBKSY',
+            'blogs' => $blogs,
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $slug)
+    {
+        // $blog = Blog::find($id);
+        $blog = Blog::where('slug', $slug)->firstOrFail();
 
         return view('blog.blog', [
             'title' => 'Blog - IKBKSY',
-            'blogs' => $blogs,
+            'blog' => $blog
         ]);
     }
 
@@ -28,7 +44,7 @@ class BlogController extends Controller
      */
     public function all()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::latest()->paginate(10);
         // $blogs = Blog::paginate(10);
         // $members = Member::with('department')->get();
 
@@ -83,14 +99,6 @@ class BlogController extends Controller
         ]);
 
         return redirect()->route('allBlog')->with('success', 'Success add new blog !');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**

@@ -35,7 +35,7 @@
           </tr>
         </thead>
         <tbody>
-          @php $no = 1 @endphp
+          @php $no = ($blogs->currentPage() - 1) * $blogs->perPage() + 1 @endphp
           @foreach ($blogs as $blog)
             <tr>
               <td class="text-center">{{ $no++ }}</td>
@@ -69,6 +69,8 @@
         </tbody>
       </table>
     </div>
+
+    {{ $blogs->links() }}
 
   </div>
 
