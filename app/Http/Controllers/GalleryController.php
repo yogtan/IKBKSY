@@ -70,7 +70,6 @@ class GalleryController extends Controller
         $request->validate([
             'images' => 'required|array',
             'images.*' => 'image|mimes:jpg,jpeg,png,svg|max:2048',
-            // 'id_event' => 'required',
             'id_event' => 'required|exists:events,id',
         ]);
 
@@ -146,7 +145,16 @@ class GalleryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+        $events = Event::all();
+        $gallery = Gallery::find($id);
+
+        return view('admin.galeri.edit-galeri', [
+            'title' => 'Detail Show - IKBKSY',
+            'categories' => $categories,
+            'events' => $events,
+            'gallery' => $gallery,
+        ]);
     }
 
     /**
@@ -154,7 +162,34 @@ class GalleryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_event' => "required",
+            'image' => "nullable|image|mimes:jpg,jpeg,png,svg|max:2048",
+        ]);
+
+        $gallery = Gallery::find($id);
+
+        // Cek apakah gambar sudah diunggah
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($gallery->name && Storage::disk('public')->exists($gallery->name)) {
+                Storage::disk('public')->delete($gallery->name);
+            }
+
+            // Simpan gambar baru
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $image = $file->storeAs('Galeri/' . $gallery->event->slug, $fileName);
+            $gallery->name = $image;
+        }
+
+        // Update data
+        $gallery->id_event = $request->id_event;
+
+        // Simpan data
+        $gallery->save();
+
+        return redirect()->route('allGallery')->with('success', 'Success update your data gallery');
     }
 
     /**

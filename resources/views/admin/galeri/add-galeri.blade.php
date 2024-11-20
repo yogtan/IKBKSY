@@ -45,7 +45,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label fw-bolder">Images</label>
-                        <input type="file" accept=".jpg, .jpeg, .png, .svg" class="form-control" id="exampleFormControlInput1" name="images[]" multiple required>
+                        <input type="file" accept=".jpg, .jpeg, .png, .svg" class="form-control" id="exampleFormControlInput1" name="images[]" value="" multiple required>
                     </div>
                     <div class="mb-4 text-center">
                         <button type="submit" class="btn btn-primary shadow-sm mt-4 fw-bold">Upload</button>

@@ -131,4 +131,6 @@ Route::get('/admin/gallery/add/new/{id_event?}', [GalleryController::class, 'cre
 Route::get('/admin/gallery/add/show/{id_event}', [GalleryController::class, 'showEventGalleries'])->name('showEventGalleries');
 Route::post('/admin/gallery/upload', [GalleryController::class, 'uploadImage'])->name('uploadGalleryImage');
 Route::get('/admin/gallery/release/{id_event}', [GalleryController::class, 'releaseGallery'])->name('releaseGallery');
+Route::get('/admin/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('editGallery');
+Route::patch('/admin/gallery/edit/{id}', [GalleryController::class, 'update'])->name('updateGallery');
 Route::delete('/admin/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('deleteGallery');

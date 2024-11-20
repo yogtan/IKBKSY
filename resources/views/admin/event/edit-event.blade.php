@@ -5,7 +5,7 @@
 <section>
     <div class="container my-5">
         <div class="hero-teks-h2">
-            <h1>Tambahkan Event<span class="teks-orange"> IKBKSY</span></h1>
+            <h1>Edit Event<span class="teks-orange"> IKBKSY</span></h1>
         </div>
 
         @if (session('success'))
@@ -35,15 +35,15 @@
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Event" name="event" value="{{ $event->name }}" required>
                     </div>
                     <div class="mb-4">
-                        <label for="floatingSelectGrid" class="form-label fw-bolder">Department</label>
+                        <label for="floatingSelectGrid" class="form-label fw-bolder">Category</label>
                         <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="id_category">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" {{ $category->id == $event->id_category ? 'selected' : '' }}>{{ $category->category }}</option>
                             @endforeach
                         </select>
-                        {{-- add new department --}}
+                        {{-- add new category --}}
                         <div class="ms-1 mt-2">
-                            <a href="#" class="pe-auto cursor-pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Department</a>
+                            <a href="#" class="pe-auto cursor-pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Category</a>
                           </div>
                     </div>
                     <div class="mb-4">

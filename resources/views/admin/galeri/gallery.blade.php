@@ -6,7 +6,7 @@
 
   <div class="container my-5">
     <div class="hero-teks-h2">
-      <h1>Daftar Galeri<span class="teks-orange"> IKBKSY</span></h1>
+      <h1>Gallery Event<span class="teks-orange"> {{ $event->name }}</span></h1>
     </div>
 
     @if (session('success'))
@@ -26,37 +26,44 @@
       </div>
     @endif
 
-    <div class="mt-3">
+    {{-- <div class="mt-3">
       <a href="{{ route('addGallery') }}" class="btn btn-primary btn-sm shadow">New Gallery</a>
-    </div>
-
+    </div> --}}
 
     <div class="table-responsive my-4">
       <table class="table table-bordered table-striped">
         <thead class="text-center">
           <tr>
             <th scope="col">No</th>
+            <th scope="col">Name</th>
             <th scope="col">Event</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          @php $no = ($events->currentPage() - 1) * $events->perPage() + 1 @endphp
-          @foreach ($events as $event)
+          @php $no = ($galleries->currentPage() - 1) * $galleries->perPage() + 1 @endphp
+          @foreach ($galleries as $gallery)
             <tr>
               <td class="text-center">{{ $no++ }}</td>
-              <td>{{ Str::limit($event->name, 70) }}</td>
+              <td class="text-center">
+                @if ($gallery->name)
+                  <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ Str::limit($gallery->event->name, 10) }}" loading="lazy" style="width: 50px; height: 50px; object-fit: cover;">
+                @else
+                  <img src="{{ asset('storage/default-avatar.jpg') }}" alt="Default Image" loading="lazy" style="width: 50px; height: 50px; object-fit: cover;">
+                @endif
+              </td>
+              <td>{{ $gallery->event->name }}</td>
               <td>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center align-items-center">
-                  <a href="{{ route('showGallery', $event->id) }}" class="btn btn-primary btn-sm">
-                    Detail
-                  </a>
-                  <a type="submit" href="{{ route('updateEvent', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                  <form action="{{ route('deleteEvent', $event->id) }}" method="POST" onsubmit="return confirm('Deleting event data may result in the loss and corruption of some data. Are you sure delete data event ?')">
+                  {{-- Button edit --}}
+                  <a type="submit" href="{{ route('updateGallery', $gallery->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                  {{-- Button delete --}}
+                  <form action="{{ route('deleteGallery', $gallery->id) }}" method="POST" onsubmit="return confirm('Are You Sure Delete Photo On Gallery ?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                   </form>
+                </div>
                 </div>
               </td>
             </tr>
@@ -65,7 +72,7 @@
       </table>
     </div>
     
-    {{ $events->links() }}
+    {{ $galleries->links() }}
 
   </div>
 
