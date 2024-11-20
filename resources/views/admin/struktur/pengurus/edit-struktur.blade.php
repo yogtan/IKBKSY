@@ -8,6 +8,16 @@
             <h1>Tambahkan Pengurus<span class="teks-orange"> IKBKSY</span></h1>
         </div>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="card shadow mt-4 hero-teks2">
             <div class="card-body">
                 <form action="{{ route('updatePengurus', $member->id) }}" method="POST" enctype="multipart/form-data">
@@ -58,7 +68,7 @@
                     <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Department</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('addDepartment') }}" method="POST">
+                <form action="{{ route('storeDepartment') }}" method="POST">
                     <div class="modal-body">
                         @csrf
                         <label for="exampleFormControlInput2" class="form-label fw-bolder">New Department</label>

@@ -57,26 +57,44 @@
         <script>
             function redirectToEvent(eventId) {
                 if (eventId) {
-                    window.location.href = '{{ url('admin/gallery/add') }}' + '/' + eventId;
+                    window.location.href = '{{ url('admin/gallery/add/show') }}' + '/' + eventId;
                 }
             }
         </script>
 
-        {{-- Menampilkan gambar yang telah diupload --}}
+        {{-- Menampilkan gambar yang telah diupload selama 10 terakhir --}}
         @if ($galleries && $galleries->count() > 0)
             <div class="card shadow mt-4 hero-teks2">
                 <div class="card-body">
-                    <h5 class="card-title my-3 text-center">Pictures Your Post</h5>
+                    <h5 class="card-title my-3 text-center">Pictures Your Post At The Last 10 Minutes</h5>
                     <div class="row">
                         @foreach ($galleries as $gallery)
-                            <div class="col-md-3 text-center mb-3">
-                                <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ $gallery->name }}" loading="lazy" class="img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
+                            <div class="col-12 col-sm-6 col-md-3 text-center mb-3">
+                                <div class="position-relative">
+                                    <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ $gallery->name }}" loading="lazy" class="img-thumbnail img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+                                    <form action="{{ route('deleteGallery', $gallery->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="source" value="addGelleryPage">
+                                        <button type="submit" class="btn position-absolute border-0 p-0 btn-trash" style="top: 0; right: 25px; background: none;" onclick="return confirm('Are you sure you want to delete this image?')">
+                                            <span class="badge rounded-pill bg-danger">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
+                {{-- {{ $galleries->links() }} --}}
             </div>
         @endif
+
+
 
         {{-- Menampilkan gambar yang telah dirilis --}}
         @if ($releasedGalleries && $releasedGalleries->count() > 0)
@@ -85,8 +103,23 @@
                     <h5 class="card-title my-3 text-center">Pictures have been released</h5>
                     <div class="row">
                         @foreach ($releasedGalleries as $gallery)
-                            <div class="col-md-3 text-center mb-3">
-                                <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ $gallery->name }}" loading="lazy" class="img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
+                            <div class="col-12 col-sm-6 col-md-3 text-center mb-3">
+                                <div class="position-relative">
+                                    <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ $gallery->name }}" loading="lazy" class="img-thumbnail img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+                                    <form action="{{ route('deleteGallery', $gallery->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="source" value="addGelleryPage">
+                                        <button type="submit" class="btn position-absolute border-0 p-0 btn-trash" style="top: 0; right: 25px; background: none;" onclick="return confirm('Are you sure you want to delete this image?')">
+                                            <span class="badge rounded-pill bg-danger">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -97,23 +130,76 @@
             {{-- Menampilkan gambar yang belum dirilis --}}
         @if ($unreleasedGalleries && $unreleasedGalleries->count() > 0)
             <div class="card shadow mt-4 hero-teks2">
-                <div class="card-body">
+                <div class="card-title">
                     <h5 class="card-title my-3 text-center">Pictures not yet released</h5>
+                </div>
+                <div class="card-body">
                     <div class="row">
                         @foreach ($unreleasedGalleries as $gallery)
-                            <div class="col-md-3 text-center mb-3">
-                                <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ $gallery->name }}" loading="lazy" class="img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;">
+                            <div class="col-12 col-sm-6 col-md-3 text-center mb-3">
+                                <div class="position-relative">
+                                    <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ $gallery->name }}" loading="lazy" class="img-thumbnail img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+                                    <form action="{{ route('deleteGallery', $gallery->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="source" value="addGelleryPage">
+                                        <button type="submit" class="btn position-absolute border-0 p-0 btn-trash" style="top: 0; right: 25px; background: none;" onclick="return confirm('Are you sure you want to delete this image?')">
+                                            <span class="badge rounded-pill bg-danger">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
+                {{-- <div class="card-footer text-muted">
+                    {{ $unreleasedGalleries->links() }}
+                </div> --}}
             </div>
         @endif
 
+        {{-- <div class="card text-center">
+            <div class="card-header">
+                <h5 class="card-title my-3 text-center">Pictures not yet released</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach ($unreleasedGalleries as $gallery)
+                        <div class="col-12 col-sm-6 col-md-3 text-center mb-3">
+                            <div class="position-relative">
+                                <img src="{{ asset('storage/' . $gallery->name) }}" alt="{{ $gallery->name }}" loading="lazy" class="img-thumbnail img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+                                <form action="{{ route('deleteGallery', $gallery->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="source" value="addGelleryPage">
+                                    <button type="submit" class="btn position-absolute border-0 p-0 btn-trash" style="top: 0; right: 25px; background: none;" onclick="return confirm('Are you sure you want to delete this image?')">
+                                        <span class="badge rounded-pill bg-danger">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+              {{ $unreleasedGalleries->links() }}
+            </div>
+        </div> --}}
 
-        @if ($galleries && $galleries->count() > 0)
+
+        @if ($unreleasedGalleries && $unreleasedGalleries->count() > 0)
             <div class="text-center mt-4">
-                <a href="{{ route('releaseGallery', $id_event) }}" class="btn btn-success">Release Gallery</a>
+                <a href="{{ route('releaseGallery', $id_event) }}" class="btn btn-success">Release Picture In The Gallery</a>
             </div>
         @endif
 
@@ -128,7 +214,7 @@
                     <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Event</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('addEvent') }}" method="POST">
+                <form action="{{ route('storeEvent') }}" method="POST">
                     <div class="modal-body">
                         @csrf
                         <input type="hidden" name="source" value="addGelleryPage">
@@ -179,7 +265,7 @@
                     <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('addCategory') }}" method="POST">
+                <form action="{{ route('storeCategory') }}" method="POST">
                     <div class="modal-body">
                         @csrf
                         <input type="hidden" name="source" value="addGelleryPage">

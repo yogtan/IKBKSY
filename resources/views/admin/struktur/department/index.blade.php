@@ -17,7 +17,7 @@
     @endif
 
     <div class="mt-3">
-      <a href="{{ route('addDepartment') }}" class="btn btn-primary btn-sm shadow">New Department</a>
+      <a href="{{ route('storeDepartment') }}" class="btn btn-primary btn-sm shadow">New Department</a>
     </div>
 
     <div class="table-responsive my-4">

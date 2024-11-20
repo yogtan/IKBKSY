@@ -8,9 +8,26 @@
             <h1>Tambahkan Event<span class="teks-orange"> IKBKSY</span></h1>
         </div>
 
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="card shadow mt-4 hero-teks2">
             <div class="card-body">
-                <form action="{{ route('addEvent') }}" method="POST">
+                <form action="{{ route('storeEvent') }}" method="POST">
                     @csrf
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label fw-bolder">Event</label>
@@ -56,7 +73,7 @@
                     <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('addCategory') }}" method="POST">
+                <form action="{{ route('storeCategory') }}" method="POST">
                     <div class="modal-body">
                         @csrf
                         <input type="hidden" name="source" value="addEventPage">

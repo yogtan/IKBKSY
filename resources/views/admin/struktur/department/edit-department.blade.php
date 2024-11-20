@@ -8,6 +8,16 @@
             <h1>Edit Department<span class="teks-orange"> IKBKSY</span></h1>
         </div>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="card shadow mt-4 hero-teks2">
             <div class="card-body">
                 <form action="{{ route('updateDepartment', $departments->id) }}" method="POST" enctype="multipart/form-data">

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Event;
 use App\Models\Gallery;
+use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -14,17 +16,17 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        // return view('admin.galeri.add-gallery');
     }
 
     public function all()
     {
         // $galleries = Gallery::latest()->paginate(10);
-        $galleries = Gallery::where('is_released', true)->latest()->paginate(10);
+        $events = Event::latest()->paginate(10);
 
         return view('admin.galeri.index', [
             'title' => 'Gallery - IKBKSY',
-            'galleries' => $galleries,
+            'events' => $events,
         ]);
     }
 
@@ -33,21 +35,20 @@ class GalleryController extends Controller
      */
     public function create(string $id_event = null)
     {
-        $events = Event::all();
-        $categories = Category::all();
-        $galleries = null;
+        $events = Event::latest()->get();
+        $categories = Category::latest()->get();
+        $galleries = collect();
+        $releasedGalleries = collect();
+        $unreleasedGalleries = collect();
 
-        // if ($id_event) {
-        //     $galleries = Gallery::where('id_event', $id_event)->get();
-        // }
+        // Mengatur waktu selama 10 menit
+        $timeLimit = Carbon::now()->subMinutes(10);
 
         if ($id_event) {
-            $galleries = Gallery::where('id_event', $id_event)->get();
-            $releasedGalleries = Gallery::where('id_event', $id_event)->where('is_released', true)->get();
-            $unreleasedGalleries = Gallery::where('id_event', $id_event)->where('is_released', false)->get();
-        } else {
-            $releasedGalleries = collect(); // Kosongkan jika tidak ada event
-            $unreleasedGalleries = collect();
+            $galleries = Gallery::where('id_event', $id_event)->where('created_at', '>=', $timeLimit)->latest()->paginate(4);
+            $releasedGalleries = Gallery::where('id_event', $id_event)->where('is_released', true)->latest()->cursorPaginate(4);
+            $unreleasedGalleries = Gallery::where('id_event', $id_event)->where('is_released', false)->latest()->cursorPaginate(4);
+            // $unreleasedGalleries = Gallery::where('id_event', $id_event)->where('is_released', false)->latest()->paginate(4);
         }
 
         return view('admin.galeri.add-galeri', [
@@ -99,12 +100,16 @@ class GalleryController extends Controller
 
     public function showEventGalleries($id_event)
     {
+        $events = Event::latest()->get();
+        $categories = Category::latest()->get();
         $galleries = Gallery::where('id_event', $id_event)->latest()->paginate(10);
         $releasedGalleries = Gallery::where('id_event', $id_event)->where('is_released', true)->get();
         $unreleasedGalleries = Gallery::where('id_event', $id_event)->where('is_released', false)->get();
 
-        return view('admin.galeri.index', [
+        return view('admin.galeri.add-galeri', [ // index
             'title' => 'Gallery - IKBKSY',
+            'events' => $events,
+            'categories' => $categories,
             'galleries' => $galleries,
             'releasedGalleries' => $releasedGalleries,
             'unreleasedGalleries' => $unreleasedGalleries,
@@ -126,7 +131,14 @@ class GalleryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $event = Event::where('id', $id)->firstOrFail();
+        $galleries = Gallery::where('id_event', $event->id)->where('is_released', true)->latest()->paginate(10); // Akan menampilkan gambar berdasarkan id_event 
+
+        return view('admin.galeri.gallery', [
+            'title' => 'Detail Show - IKBKSY',
+            'event' => $event,
+            'galleries' => $galleries,
+        ]);
     }
 
     /**
@@ -148,8 +160,27 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        //
+        $gallery = Gallery::find($id);
+        // $gallery->delete();
+
+        // Cek blog
+        if ($gallery) {
+            // Cek apakah ada gambar blog
+            if ($gallery->name && Storage::disk('public')->exists($gallery->name)) {
+                // Hapus gambar
+                Storage::disk('public')->delete($gallery->name);
+            }
+            // Hapus data user
+            $gallery->delete();
+        }
+
+        if ($request->source === 'addGelleryPage') {
+            // Masih belum akurat
+            return redirect()->route('addGallery')->with('success', 'Success delete your picture !');
+        } else {
+            return redirect()->route('allGallery')->with('success', 'Success delete your picture !');
+        }
     }
 }

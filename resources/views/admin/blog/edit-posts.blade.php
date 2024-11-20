@@ -22,7 +22,7 @@
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Author" name="author" value="{{ $blog->author }}">
                     </div>
                     <div class="mb-4">
-                        <label for="floatingSelectGrid" class="form-label fw-bolder">Department</label>
+                        <label for="floatingSelectGrid" class="form-label fw-bolder">Category</label>
                         <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="id_category">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" {{ $category->id == $blog->id_category ? 'selected' : '' }}>{{ $category->category }}</option>
@@ -30,7 +30,7 @@
                         </select>
                         {{-- add new department --}}
                         <div class="ms-1 mt-2">
-                            <a href="#" class="pe-auto cursor-pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Department</a>
+                            <a href="#" class="pe-auto cursor-pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Category</a>
                           </div>
                     </div>
                     <div class="mb-4">
@@ -63,18 +63,18 @@
         <div class="modal-dialog hero-teks2">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Department</h5>
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('addDepartment') }}" method="POST">
+                <form action="{{ route('storeCategory') }}" method="POST">
                     <div class="modal-body">
                         @csrf
-                        <input type="hidden" name="source" value="addPengurusPage">
-                        <label for="exampleFormControlInput2" class="form-label fw-bolder">New Department</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="New Department" name="newDepartment" value="" required>
+                        <input type="hidden" name="source" value="addBlogPage">
+                        <label for="exampleFormControlInput2" class="form-label fw-bolder">New Category</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="New Category" name="newCategory" value="" required>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-success btn-md" type="submit" data-bs-dismiss="modal">Save Department</button>
+                        <button class="btn btn-success btn-md" type="submit" data-bs-dismiss="modal">Save Category</button>
                         <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>

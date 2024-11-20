@@ -47,9 +47,9 @@ class DepartmentController extends Controller
         ]);
 
         if ($request->source === 'addPengurusPage') {
-            return redirect()->route('addPengurus');
+            return redirect()->route('addPengurus')->with('success', 'Success add new data department !');
         } else {
-            return redirect()->route('department');
+            return redirect()->route('department')->with('success', 'Success add new data department !');
         }
     }
 

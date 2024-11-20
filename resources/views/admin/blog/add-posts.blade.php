@@ -27,7 +27,7 @@
 
         <div class="card shadow mt-4 hero-teks2">
             <div class="card-body">
-                <form action="{{ route('addBlog') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('storeBlog') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label fw-bolder">Title</label>
@@ -77,7 +77,7 @@
                     <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('addCategory') }}" method="POST">
+                <form action="{{ route('storeCategory') }}" method="POST">
                     <div class="modal-body">
                         @csrf
                         <input type="hidden" name="source" value="addBlogPage">

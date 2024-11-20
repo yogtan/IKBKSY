@@ -10,7 +10,7 @@
 
         <div class="card shadow mt-4 hero-teks2">
             <div class="card-body">
-                <form action="{{ route('addCategory') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('storeCategory') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="source" value="addCategoryPage">
                     <div class="mb-4">
