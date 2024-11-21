@@ -58,7 +58,7 @@
                   {{-- Button edit --}}
                   <a type="submit" href="{{ route('updateGallery', $gallery->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   {{-- Button delete --}}
-                  <form action="{{ route('deleteGallery', $gallery->id) }}" method="POST" onsubmit="return confirm('Are You Sure Delete Photo On Gallery ?')">
+                  <form action="{{ route('deleteImageGallery', $gallery->id) }}" method="POST" onsubmit="return confirm('Are You Sure Delete Photo On Gallery ?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

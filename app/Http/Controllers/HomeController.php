@@ -27,6 +27,35 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home', [
+            'title' => 'Home - IKBKSY',
+        ]);
+    }
+
+    public function sejarah()
+    {
+        return view('about.sejarah', [
+            'title' => 'Sejarah - IKBKSY',
+        ]);
+    }
+
+    public function visiMisi()
+    {
+        return view('about.visimisi', [
+            'title' => 'Visi & Misi - IKBKSY',
+        ]);
+    }
+
+    public function contact()
+    {
+        return view('kontak.kontak', [
+            'title' => 'Kontak - IKBKSY',
+        ]);
+    }
+
+
+    public function dashboard()
+    {
         // return view('admin/admin-dashboard');
         $totalBlog = Blog::count();
         $totalPengurus = Member::count();

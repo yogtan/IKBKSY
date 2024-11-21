@@ -8,6 +8,14 @@ body {
     background-color: white;
 }
 
+.text-color-1 {
+    color: #172D13;
+}
+
+.text-color-2 {
+    color: #D76F30;
+}
+
 /* NAVBARRRR */
 .navbar {
     background-color: #172D13;

@@ -48,7 +48,7 @@
               <td>{{ Str::limit($event->name, 70) }}</td>
               <td>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center align-items-center">
-                  <a href="{{ route('showGallery', $event->id) }}" class="btn btn-primary btn-sm">
+                  <a href="{{ route('showGallery', $event->id) }}" class="btn btn-info btn-sm">
                     Detail
                   </a>
                   <a type="submit" href="{{ route('updateEvent', ['id' => $event->id, 'source' => 'editGalleryPage']) }}" class="btn btn-warning btn-sm">Edit</a>

@@ -33,7 +33,7 @@
 
     <section>
       <div class="my-5">
-        <div class="row row-cols-1 row-cols-md-2 g-5 d-flex justify-content-between align-items-center">
+        <div class="row row-cols-1 row-cols-md-2 g-5  d-flex justify-content-between align-items-center">
           {{-- Card --}}
           @foreach ($blogs as $blog)
             <div class="col justify-content-center">

@@ -27,6 +27,7 @@ class Event extends Model
 
     public function gallery()
     {
-        return $this->hasMany(Gallery::class);
+        // return $this->hasMany(Gallery::class);
+        return $this->hasMany(Gallery::class, 'id_event');
     }
 }

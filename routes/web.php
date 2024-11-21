@@ -20,69 +20,30 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => "Home - IKBKSY"
-    ]);
-});
-
-
-Route::get('/about/sejarah', function () {
-    return view('about.sejarah', [
-        'title' => "Sejarah - IKBKSY"
-    ]);
-})->name('sejarahIKBKSY');
-
-Route::get('/about/visi-misi', function () {
-    return view('about.visimisi', [
-        'title' => "Visi & Misi - IKBKSY"
-    ]);
-})->name('visimisiIKBKSY');
-
-// Route::get('/about/pengurus', function () {
-//     return view('about.pengurus', [
-//         'title' => "Pengurus - IKBKSY"
-//     ]);
-// })->name('pengurusIKBKSY');
-
-// Route::get('/blog', function () {
-//     return view('blog.blog', [
-//         'title' => "Blog - IKBKSY"
-//     ]);
-// })->name('blogIKBKSY');
-
-Route::get('/galeri', function () {
-    return view('galeri.galeri', [
-        'title' => "galeri - IKBKSY"
-    ]);
-})->name('galeriIKBKSY');
-
-Route::get('/kontak', function () {
-    return view('kontak.kontak', [
-        'title' => "Kontak - IKBKSY"
-    ]);
-})->name('kontakIKBKSY');
-
-Route::get('/admin/struktur', function () {
-    return view('admin.struktur.index', [
-        'title' => "galeri - IKBKSY"
-    ]);
-});
-
 Auth::routes();
 
-Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('pengurusIKBKSY');
-// Route::get('/about/pengurus/add', [KepenggurusanController::class, 'create'])->name('addPengurus');
-// Route::post('/about/pengurus/add', [KepenggurusanController::class, 'store'])->name('addPengurus');
-// Route::post('/about/pengurus/department/add', [DepartmentController::class, 'store'])->name('addDepartment');
+// Home
+Route::get('/', [HomeController::class, 'index'])->name('homeIKBKSY');
 
+// About
+Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('pengurusIKBKSY');
+Route::get('/about/sejarah', [HomeController::class, 'sejarah'])->name('sejarahIKBKSY');
+Route::get('/about/visi-misi', [HomeController::class, 'visiMisi'])->name('visimisiIKBKSY');
+
+// Blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blogIKBKSY');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blogDetail');
 
+// Galeri
+Route::get('/galeri', [GalleryController::class, 'index'])->name('galeriIKBKSY');
+Route::get('/galeri/{slug}', [GalleryController::class, 'view'])->name('galeriDetail');
+
+// Kontak
+Route::get('/kontak', [HomeController::class, 'contact'])->name('kontakIKBKSY');
 
 
 // admin
-Route::get('/admin', [HomeController::class, 'index'])->name('admin');
+Route::get('/admin', [HomeController::class, 'dashboard'])->name('admin');
 
 // Pengurus
 Route::get('/admin/struktur/pengurus/', [KepenggurusanController::class, 'all'])->name('allPengurus');
@@ -134,3 +95,4 @@ Route::get('/admin/gallery/release/{id_event}', [GalleryController::class, 'rele
 Route::get('/admin/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('editGallery');
 Route::patch('/admin/gallery/edit/{id}', [GalleryController::class, 'update'])->name('updateGallery');
 Route::delete('/admin/gallery/delete/{id}/{source}', [GalleryController::class, 'destroy'])->name('deleteGallery');
+Route::delete('/admin/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('deleteImageGallery');

@@ -16,7 +16,24 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        // return view('admin.galeri.add-gallery');
+        $events = Event::with('gallery')->latest()->paginate(10);
+
+        return view('galeri.galleries', [
+            'title' => "Gallery IKBKSY",
+            'events' => $events,
+        ]);
+    }
+
+    public function view(string $slug)
+    {
+        $event = Event::where('slug', $slug)->firstOrFail();
+        $galleries = Gallery::where('id_event', $event->id)->where('is_released', true)->latest()->paginate(10); // Akan menampilkan gambar berdasarkan id_event 
+
+        return view('galeri.gallery', [
+            'title' => 'Detail Gallery - IKBKSY',
+            'event' => $event,
+            'galleries' => $galleries,
+        ]);
     }
 
     public function all()
