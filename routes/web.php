@@ -122,7 +122,7 @@ Route::get('/admin/event/add', [EventController::class, 'create'])->name('addEve
 Route::post('/admin/event/add', [EventController::class, 'store'])->name('storeEvent');
 Route::get('/admin/event/edit/{id}', [EventController::class, 'edit'])->name('editEvent');
 Route::patch('/admin/event/edit/{id}', [EventController::class, 'update'])->name('updateEvent');
-Route::delete('/admin/event/delete/{id}', [EventController::class, 'destroy'])->name('deleteEvent');
+Route::delete('/admin/event/delete/{id}/{source}', [EventController::class, 'destroy'])->name('deleteEvent');
 
 // Gallery
 Route::get('/admin/gallery', [GalleryController::class, 'all'])->name('allGallery');
@@ -133,4 +133,4 @@ Route::post('/admin/gallery/upload', [GalleryController::class, 'uploadImage'])-
 Route::get('/admin/gallery/release/{id_event}', [GalleryController::class, 'releaseGallery'])->name('releaseGallery');
 Route::get('/admin/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('editGallery');
 Route::patch('/admin/gallery/edit/{id}', [GalleryController::class, 'update'])->name('updateGallery');
-Route::delete('/admin/gallery/delete/{id}', [GalleryController::class, 'destroy'])->name('deleteGallery');
+Route::delete('/admin/gallery/delete/{id}/{source}', [GalleryController::class, 'destroy'])->name('deleteGallery');

@@ -51,8 +51,8 @@
                   <a href="{{ route('showGallery', $event->id) }}" class="btn btn-primary btn-sm">
                     Detail
                   </a>
-                  <a type="submit" href="{{ route('updateEvent', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                  <form action="{{ route('deleteEvent', $event->id) }}" method="POST" onsubmit="return confirm('Deleting event data may result in the loss and corruption of some data. Are you sure delete data event ?')">
+                  <a type="submit" href="{{ route('updateEvent', ['id' => $event->id, 'source' => 'editGalleryPage']) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <form action="{{ route('deleteEvent', ['id' => $event->id, 'source' => 'deleteGalleryPage']) }}" method="POST" onsubmit="return confirm('Deleting event data may result in the loss and corruption of some data. Are you sure delete data event ?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

@@ -46,9 +46,9 @@
               <td>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center align-items-center">
                   {{-- Button edit --}}
-                  <a type="submit" href="{{ route('updateEvent', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <a type="submit" href="{{ route('updateEvent', ['id' => $event->id, 'source' => 'editEventPage']) }}" class="btn btn-warning btn-sm">Edit</a>
                   {{-- Button delete --}}
-                  <form action="{{ route('deleteEvent', $event->id) }}" method="POST" onsubmit="return confirm('Deleting event data may result in the loss and corruption of some data. Are you sure delete data event ?')">
+                  <form action="{{ route('deleteEvent', ['id' => $event->id, 'source' => 'deleteEventPage']) }}" method="POST" onsubmit="return confirm('Deleting event data may result in the loss and corruption of some data. Are you sure delete data event ?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

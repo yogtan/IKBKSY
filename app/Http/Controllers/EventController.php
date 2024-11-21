@@ -74,15 +74,17 @@ class EventController extends Controller
         //
     }
 
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
         $categories = Category::all();
         $event = Event::find($id);
+        $source = $request->get('source', 'editEventPage');
 
         return view('admin.event.edit-event', [
             'title' => 'Edit Your Blog - IKBKSY',
             'categories' => $categories,
             'event' => $event,
+            'source' => $source,
         ]);
     }
 
@@ -115,17 +117,25 @@ class EventController extends Controller
         // Simpan perubahan
         $event->save();
 
-        return redirect()->route('event')->with('success', 'Success update blog !');
+        if ($request->source === 'editGalleryPage') {
+            return redirect()->route('allGallery')->with('success', 'Success update blog !');
+        } else {
+            return redirect()->route('event')->with('success', 'Success update blog !');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id, string $source)
     {
         $event = Event::find($id);
         $event->delete();
 
-        return redirect()->to('event')->with('success', 'Success delete your event !');
+        if ($source === 'deleteGalleryPage') {
+            return redirect()->route('allGallery')->with('success', 'Success delete your event !');
+        } else {
+            return redirect()->route('event')->with('success', 'Success delete your event !');
+        }
     }
 }

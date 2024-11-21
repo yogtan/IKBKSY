@@ -30,6 +30,7 @@
                 <form action="{{ route('updateEvent', $event->id) }}" method="POST">
                     @csrf
                     @method('PATCH')
+                    <input type="hidden" name="source" value={{ $source }}>
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="form-label fw-bolder">Event</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Event" name="event" value="{{ $event->name }}" required>
