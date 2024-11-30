@@ -21,12 +21,13 @@ use App\Http\Controllers\HomeController;
 */
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('homeIKBKSY');
-Route::get('/home', [HomeController::class, 'index'])->name('homeIKBKSY');
+// Route::get('/home', [HomeController::class, 'index'])->name('homeIKBKSY');
 
 // About
-Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('pengurusIKBKSY');
 Route::get('/about/sejarah', [HomeController::class, 'sejarah'])->name('sejarahIKBKSY');
+Route::get('/about/logo', [HomeController::class, 'logo'])->name('logoIKBKSY');
 Route::get('/about/visi-misi', [HomeController::class, 'visiMisi'])->name('visimisiIKBKSY');
+Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('pengurusIKBKSY');
 
 // Blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blogIKBKSY');
@@ -38,6 +39,7 @@ Route::get('/galeri/{slug}', [GalleryController::class, 'view'])->name('galeriDe
 
 // Kontak
 Route::get('/kontak', [HomeController::class, 'contact'])->name('kontakIKBKSY');
+
 
 Auth::routes();
 

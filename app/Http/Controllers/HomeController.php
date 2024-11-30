@@ -39,6 +39,13 @@ class HomeController extends Controller
         ]);
     }
 
+    public function logo()
+    {
+        return view('about.logo', [
+            'title' => 'Logo - IKBKSY',
+        ]);
+    }
+
     public function visiMisi()
     {
         return view('about.visimisi', [
