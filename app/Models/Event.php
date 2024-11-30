@@ -30,4 +30,14 @@ class Event extends Model
         // return $this->hasMany(Gallery::class);
         return $this->hasMany(Gallery::class, 'id_event');
     }
+
+    public function scopeFilter($query, array $filters): void
+    {
+        // Search berdasarkan title
+        $query->when(
+            $filters['search'] ?? false,
+            fn($query, $search) =>
+            $query->where('name', 'like', '%' . $search . '%')
+        );
+    }
 }

@@ -19,11 +19,9 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Auth::routes();
-
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('homeIKBKSY');
+Route::get('/home', [HomeController::class, 'index'])->name('homeIKBKSY');
 
 // About
 Route::get('/about/pengurus', [KepenggurusanController::class, 'index'])->name('pengurusIKBKSY');
@@ -41,6 +39,7 @@ Route::get('/galeri/{slug}', [GalleryController::class, 'view'])->name('galeriDe
 // Kontak
 Route::get('/kontak', [HomeController::class, 'contact'])->name('kontakIKBKSY');
 
+Auth::routes();
 
 // admin
 Route::get('/admin', [HomeController::class, 'dashboard'])->name('admin');

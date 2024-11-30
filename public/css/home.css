@@ -116,12 +116,14 @@ body {
 
 .card-img {
     max-height: 300px;
-    background-position: cover;
+    width: 100%;
+    object-fit: cover;
+    /* background-position: cover; */
 }
 
 .img-blog {
-    max-height: 30%;
-    max-width: 85%;
+    max-height: 600px;
+    max-width: 800px;
 }
 
 /* RESPONSIVEEE */

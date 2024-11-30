@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="/"><img src="/img/logo-ikbksy.svg" width="76px" alt=""></a>
+        <a class="navbar-brand" href="/"><img src="{{ asset('img/logo-IKBKSY.svg') }}" width="76px" alt="Logo IKBKSY"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

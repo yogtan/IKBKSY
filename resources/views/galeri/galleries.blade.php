@@ -11,6 +11,27 @@
     </section>
 
     <section>
+      <div class="container my-5">
+        <form action="{{ route('galeriIKBKSY') }}" method="GET">
+          @csrf
+          {{-- @if (request('category'))
+            <input type="hidden" name="category" value="{{ request('category') }}">
+          @endif --}}
+          {{-- @if (request('author'))
+            <input type="hidden" name="author" value="{{ request('author') }}">
+          @endif --}}
+          <div class="d-flex justify-content-center gap-3">
+            <input type="text" class="form-control w-75 border-2 border-dark deskripsi-h3" placeholder="Search Your Gallery" aria-label="Search Your List" name="search" value="{{ request('search') }}">
+            <button class="btn btn-primary deskripsi-h3" type="submit">
+              Search
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section>
       <div class="my-5">
         <div class="row row-cols-1 row-cols-md-3 g-4">
           @foreach ($events as $event)
@@ -29,7 +50,7 @@
                     </a>
                   </div>
                   <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                    <p class="card-text hero-teks2 fst-normal fw-bolder lh-base text-color-1">
+                    <p class="card-text hero-teks2 fst-normal fst-normal lh-base text-color-1">
                       {{ Str::limit($event->description, 100) }}
                     </p>
                   </div>

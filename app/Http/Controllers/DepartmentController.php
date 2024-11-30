@@ -15,7 +15,7 @@ class DepartmentController extends Controller
         $departments = Department::latest()->paginate(10);
 
         return view('admin.struktur.department.index', [
-            'titile' => 'Department - IKBKSY',
+            'title' => 'Department - IKBKSY',
             'departments' => $departments
         ]);
     }
@@ -28,7 +28,7 @@ class DepartmentController extends Controller
         $departments = Department::all();
 
         return view('admin.struktur.department.add-department', [
-            'titile' => 'Department - IKBKSY',
+            'title' => 'Department - IKBKSY',
             'departments' => $departments
         ]);
     }

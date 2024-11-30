@@ -17,7 +17,7 @@ class BlogController extends Controller
     {
         // $blogs = Blog::latest()->paginate(10);
         // $blogs = Blog::filter(request(['search', 'category', 'author']))->latest()->paginate(10)->withQueryString();
-        $blogs = Blog::filter(request(['search']))->latest()->paginate(10)->withQueryString();
+        $blogs = Blog::filter(request(['search']))->latest()->paginate(15)->withQueryString();
 
         return view('blog.blogs', [
             'title' => 'Blog - IKBKSY',

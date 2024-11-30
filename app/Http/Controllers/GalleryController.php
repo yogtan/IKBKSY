@@ -16,7 +16,8 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $events = Event::with('gallery')->latest()->paginate(10);
+        // $events = Event::with('gallery')->latest()->paginate(10);
+        $events = Event::query()->filter(request(['search']))->latest()->paginate(15)->withQueryString();
 
         return view('galeri.galleries', [
             'title' => "Gallery IKBKSY",

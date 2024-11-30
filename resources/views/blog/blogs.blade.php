@@ -38,7 +38,7 @@
           @foreach ($blogs as $blog)
             <div class="col justify-content-center">
               <div class="card text-bg-dark rounded-0 shadow" style="height: 300px;">
-                <img src="{{ asset('storage/' . $blog->image) }}" class="card-img opacity-50" alt="{{ Str::limit($blog->title, 60) }}" loading="lazy">
+                <img src="{{ asset('storage/' . $blog->image) }}" class="card-img img-fluid opacity-50" alt="{{ Str::limit($blog->title, 60) }}" loading="lazy">
                 <div class="card-img-overlay d-flex flex-column justify-content-end">
                   <h5 class="card-title teks3 fw-bolder lh-lg">
                     <a href="{{ route('blogDetail', $blog->slug) }}" class="text-decoration-none text-light">

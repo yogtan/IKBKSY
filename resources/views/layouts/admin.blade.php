@@ -50,9 +50,10 @@
     <link href="/css/admin.css" rel="stylesheet">
 
     {{-- ICON LOGO PADA HEADER --}}
-    <link rel="icon" href="/img/logo-ikbksy.svg" type="image/x-icons">
+    {{-- <link rel="icon" href="/img/logo-ikbksy.svg" type="image/x-icons"> --}}
+    <link rel="icon" href="{{ asset('img/logo-ikbksy.svg') }}" type="image/x-icons">
 
-    <title>IKBKSY</title>
+    <title>{{ $title }}</title>
 </head>
 
 <body>
